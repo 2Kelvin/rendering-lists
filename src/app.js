@@ -31,6 +31,7 @@ const people = [
     }
 ];
 
+// -----> filter() <-------
 function ChemistPeople() {
     // returns the whole object of the person whose profession is a chemist
     const chemists = people.filter((person) => person.profession === "Chemist");
@@ -45,19 +46,23 @@ function ChemistPeople() {
     return <ul>{listChemists}</ul>
 }
 
-// function PeopleList() {
-//     const listOfPeople = people.map((person) =>
-//         <li key={person.id}>
-//             {person.name}
-//         </li>);
+// -----> map() <-------
+function AllScientists() {
+    const listOfPeople = people.map((person) =>
+        <li key={person.id}>
+            <b>{person.name}:</b>{` ${person.profession} known for ${person.accomplishment}`}
+        </li>);
 
-//     return <ul>{listOfPeople}</ul>;
-// }
+    return <ul>{listOfPeople}</ul>;
+}
 
 export default function App() {
     return (
         <div className="app">
-            <h1>Scientists List</h1>
+            <h1>Filtering and Mapping a Scientists List</h1>
+            <h2>All Scientists</h2>
+            <AllScientists />
+            <h2>Chemists Scientists</h2>
             <ChemistPeople />
         </div>
     );

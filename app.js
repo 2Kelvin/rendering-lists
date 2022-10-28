@@ -25,6 +25,7 @@ var people = [{
     accomplishment: "white dwarf star mass calculations"
 }];
 
+// -----> filter() <-------
 function ChemistPeople() {
     // returns the whole object of the person whose profession is a chemist
     var chemists = people.filter(function (person) {
@@ -53,14 +54,28 @@ function ChemistPeople() {
     );
 }
 
-// function PeopleList() {
-//     const listOfPeople = people.map((person) =>
-//         <li key={person.id}>
-//             {person.name}
-//         </li>);
+// -----> map() <-------
+function AllScientists() {
+    var listOfPeople = people.map(function (person) {
+        return React.createElement(
+            "li",
+            { key: person.id },
+            React.createElement(
+                "b",
+                null,
+                person.name,
+                ":"
+            ),
+            " " + person.profession + " known for " + person.accomplishment
+        );
+    });
 
-//     return <ul>{listOfPeople}</ul>;
-// }
+    return React.createElement(
+        "ul",
+        null,
+        listOfPeople
+    );
+}
 
 export default function App() {
     return React.createElement(
@@ -69,7 +84,18 @@ export default function App() {
         React.createElement(
             "h1",
             null,
-            "Scientists List"
+            "Filtering and Mapping a Scientists List"
+        ),
+        React.createElement(
+            "h2",
+            null,
+            "All Scientists"
+        ),
+        React.createElement(AllScientists, null),
+        React.createElement(
+            "h2",
+            null,
+            "Chemists Scientists"
         ),
         React.createElement(ChemistPeople, null)
     );
