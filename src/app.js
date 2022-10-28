@@ -1,21 +1,59 @@
 const people = [
-    "Creola Katherine Johnson: Mathematician",
-    "Mario Jose Molina-Pasquel Henriquez: Chemist",
-    "Mohammed Abdus Salam: Physicist",
-    "Percy Lavon Julian: Chemist",
-    "Subrhmanyan Chandrasekhar: Astrophysicist"
+    {
+        id: 0,
+        name: "Creola Katherine Johnson",
+        profession: "Mathematician"
+    },
+    {
+        id: 1,
+        name: "Mario Jose Molina-Pasquel Henriquez",
+        profession: "Chemist"
+    },
+    {
+        id: 2,
+        name: "Mohammed Abdus Salam",
+        profession: "Physicist"
+    },
+    {
+        id: 3,
+        name: "Percy Lavon Julian",
+        profession: "Chemist"
+    },
+    {
+        id: 4,
+        name: "Subrhmanyan Chandrasekhar",
+        profession: "Astrophysicist"
+    }
 ];
 
-function PeopleList() {
-    const listOfPeople = people.map((person) => <li>{person}</li>);
-    return <ul>{listOfPeople}</ul>
+function ChemistPeople() {
+    // returns the whole object of the person whose profession is a chemist
+    const chemists = people.filter((person) => person.profession === "Chemist");
+
+    // mapping over the chemists array to display each person's name from the object items
+    const listChemists = chemists.map(person =>
+        <li key={person.id}>
+            {person.name}
+        </li>
+    );
+
+    return <ul>{listChemists}</ul>
 }
+
+// function PeopleList() {
+//     const listOfPeople = people.map((person) =>
+//         <li key={person.id}>
+//             {person.name}
+//         </li>);
+
+//     return <ul>{listOfPeople}</ul>;
+// }
 
 export default function App() {
     return (
         <div className="app">
             <h1>Scientists List</h1>
-            <PeopleList />
+            <ChemistPeople />
         </div>
     );
 }
@@ -38,3 +76,8 @@ root.render(<App />);
     //
 
 // ** map() creates a new array; it doesn't modify the original array
+// to filter out/ serach out data from an array of items, use filter() method
+// filter() => takes an array of items and passes each item thro a test (depending on whata you were searching for)...
+// ...the test returns true/false (checking if the item meets the condition you are searching for)
+// ...filter then returns a new array containing items that returned true | those that passed the test
+// ...i.e the items you actually searched for

@@ -1,19 +1,55 @@
-var people = ["Creola Katherine Johnson: Mathematician", "Mario Jose Molina-Pasquel Henriquez: Chemist", "Mohammed Abdus Salam: Physicist", "Percy Lavon Julian: Chemist", "Subrhmanyan Chandrasekhar: Astrophysicist"];
+var people = [{
+    id: 0,
+    name: "Creola Katherine Johnson",
+    profession: "Mathematician"
+}, {
+    id: 1,
+    name: "Mario Jose Molina-Pasquel Henriquez",
+    profession: "Chemist"
+}, {
+    id: 2,
+    name: "Mohammed Abdus Salam",
+    profession: "Physicist"
+}, {
+    id: 3,
+    name: "Percy Lavon Julian",
+    profession: "Chemist"
+}, {
+    id: 4,
+    name: "Subrhmanyan Chandrasekhar",
+    profession: "Astrophysicist"
+}];
 
-function PeopleList() {
-    var listOfPeople = people.map(function (person) {
+function ChemistPeople() {
+    // returns the whole object of the person whose profession is a chemist
+    var chemists = people.filter(function (person) {
+        return person.profession === "Chemist";
+    });
+
+    // mapping over the chemists array to display each person's name from the object items
+    var listChemists = chemists.map(function (person) {
         return React.createElement(
             "li",
-            null,
-            person
+            { key: person.id },
+            person.name
         );
     });
+
     return React.createElement(
         "ul",
         null,
-        listOfPeople
+        listChemists
     );
 }
+
+// function PeopleList() {
+//     const listOfPeople = people.map((person) =>
+//         <li key={person.id}>
+//             {person.name}
+//         </li>);
+
+//     return <ul>{listOfPeople}</ul>;
+// }
 
 export default function App() {
     return React.createElement(
@@ -24,7 +60,7 @@ export default function App() {
             null,
             "Scientists List"
         ),
-        React.createElement(PeopleList, null)
+        React.createElement(ChemistPeople, null)
     );
 }
 // react
@@ -46,3 +82,8 @@ root.render(React.createElement(App, null));
 //
 
 // ** map() creates a new array; it doesn't modify the original array
+// to filter out/ serach out data from an array of items, use filter() method
+// filter() => takes an array of items and passes each item thro a test (depending on whata you were searching for)...
+// ...the test returns true/false (checking if the item meets the condition you are searching for)
+// ...filter then returns a new array containing items that returned true | those that passed the test
+// ...i.e the items you actually searched for
