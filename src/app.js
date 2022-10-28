@@ -132,3 +132,13 @@ root.render(<App />);
 // when you need your mapped list item rendered in several DOM nodes, just wrap it all up in a single <div> or 
 // ...use <since Fragment> since <></> doesn't take in attributes like the much needed key in our case
 // fragments disappear from the DOM so it will just render the components inside
+
+// Rules of keys
+    // Keys must be unique among siblings.
+        //=> (However, it’s okay to use the same key types for JSX nodes in DIFFERENT arrays)
+    // Keys must not change! Don’t generate them while rendering.
+// keys let us uniquely identify & tell apart an item among its siblings
+// /the index the item has in the array may change making it harder to identify it over time 
+// ...but keys are tagged on the item for life
+// generating keys on the fly with e.g Math.random() is bad because the key will never match with itself every time there's a render
+// just manually create a key ID in the item's data, that you can use
