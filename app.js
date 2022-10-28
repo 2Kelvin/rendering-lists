@@ -1,23 +1,28 @@
 var people = [{
     id: 0,
     name: "Creola Katherine Johnson",
-    profession: "Mathematician"
+    profession: "Mathematician",
+    accomplishment: "Spaceflight calculations"
 }, {
     id: 1,
     name: "Mario Jose Molina-Pasquel Henriquez",
-    profession: "Chemist"
+    profession: "Chemist",
+    accomplishment: "discovery of Arctic ozone hole"
 }, {
     id: 2,
     name: "Mohammed Abdus Salam",
-    profession: "Physicist"
+    profession: "Physicist",
+    accomplishment: "electromagnetism theory"
 }, {
     id: 3,
     name: "Percy Lavon Julian",
-    profession: "Chemist"
+    profession: "Chemist",
+    accomplishment: "pioneering cortisone drugs, steroids and birth control pills"
 }, {
     id: 4,
     name: "Subrhmanyan Chandrasekhar",
-    profession: "Astrophysicist"
+    profession: "Astrophysicist",
+    accomplishment: "white dwarf star mass calculations"
 }];
 
 function ChemistPeople() {
@@ -31,7 +36,13 @@ function ChemistPeople() {
         return React.createElement(
             "li",
             { key: person.id },
-            person.name
+            React.createElement(
+                "b",
+                null,
+                person.name,
+                ":"
+            ),
+            " " + person.profession + " known for " + person.accomplishment
         );
     });
 
@@ -75,11 +86,11 @@ root.render(React.createElement(App, null));
 // you can move/store that data in JavaScript objects and arrays 
 // ...and use methods like map() and filter() to render lists of components from them
 
-// 4 steps to creating <li> components from an array:
-// move the data into an array & give it an 'id' to use as the list item key
-// map the array & create a <li> item of each item in the array
-// return your listItems variable containing all mapped list items & place it in a <ul></ul>
-//
+// 4 steps to creating <li> components from an array: (MAPPING COMPONENTS)
+// move the data into an array & give each array item an 'id' to use as the list item key
+// create a map array variable & map the original array to create a <li> item of each item in the array
+// give each <li> item the key you assigned them before
+// return your mapped items variable containing all mapped list items & place it in a <ul></ul>
 
 // ** map() creates a new array; it doesn't modify the original array
 // to filter out/ serach out data from an array of items, use filter() method
@@ -87,3 +98,14 @@ root.render(React.createElement(App, null));
 // ...the test returns true/false (checking if the item meets the condition you are searching for)
 // ...filter then returns a new array containing items that returned true | those that passed the test
 // ...i.e the items you actually searched for
+
+// FILTERING COMPONENTS steps
+// create a filter array variable
+// filter the original array with the condition you want; the array items that pass the test/ condition will be returned in the filter array
+// create a new map array: map the filtered array to return <li> items of the filtered array
+// return this mapped array variable in a <ul></ul> to diaplay the list
+
+// the arraow function automatically returns the expresion after the '=>' symbol in a single line of code
+// ...so you don't have to manually write return
+// however, if you use '{}' '=>', you MUST include the return keyword
+//  {} means you'll be using more than one line of code
