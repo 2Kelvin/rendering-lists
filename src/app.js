@@ -4,30 +4,35 @@ const people = [
         name: "Creola Katherine Johnson",
         profession: "Mathematician",
         accomplishment: "Spaceflight calculations",
+        image_src: "../images/kate.jpg"
     },
     {
         id: 1,
         name: "Mario Jose Molina-Pasquel Henriquez",
         profession: "Chemist",
         accomplishment: "discovery of Arctic ozone hole",
+        image_src: "../images/mario.jpg"
     },
     {
         id: 2,
         name: "Mohammed Abdus Salam",
         profession: "Physicist",
         accomplishment: "electromagnetism theory",
+        image_src: "../images/abdus.jpg"
     },
     {
         id: 3,
         name: "Percy Lavon Julian",
         profession: "Chemist",
         accomplishment: "pioneering cortisone drugs, steroids and birth control pills",
+        image_src: "../images/lavon.jpg"
     },
     {
         id: 4,
         name: "Subrhmanyan Chandrasekhar",
         profession: "Astrophysicist",
         accomplishment: "white dwarf star mass calculations",
+        image_src: "../images/chandra.jpg"
     }
 ];
 
@@ -39,7 +44,13 @@ function ChemistPeople() {
     // mapping over the chemists array to display each person's name from the object items
     const listChemists = chemists.map(person =>
         <li key={person.id}>
-            <b>{person.name}:</b>{` ${person.profession} known for ${person.accomplishment}`}
+            <img
+                src={person.image_src}
+                alt={person.name}
+            />
+            <p>
+                <b>{person.name}:</b>{` ${person.profession} known for ${person.accomplishment}`}
+            </p>
         </li>
     );
 
@@ -50,7 +61,13 @@ function ChemistPeople() {
 function AllScientists() {
     const listOfPeople = people.map((person) =>
         <li key={person.id}>
-            <b>{person.name}:</b>{` ${person.profession} known for ${person.accomplishment}`}
+            <img
+                src={person.image_src}
+                alt={person.name}
+            />
+            <p>
+                <b>{person.name}:</b>{` ${person.profession} known for ${person.accomplishment}`}
+            </p>
         </li>);
 
     return <ul>{listOfPeople}</ul>;
@@ -62,7 +79,7 @@ export default function App() {
             <h1>Filtering and Mapping a Scientists List</h1>
             <h2>All Scientists</h2>
             <AllScientists />
-            <h2>Chemists Scientists</h2>
+            <h2>Chemist Scientists</h2>
             <ChemistPeople />
         </div>
     );
@@ -102,3 +119,16 @@ root.render(<App />);
 // ...so you don't have to manually write return
 // however, if you use '{}' '=>', you MUST include the return keyword
 //  {} means you'll be using more than one line of code 
+
+// You need to give each array item a key
+// ...a string or a number that uniquely identifies it among other items in the array
+// JSX elements directly inside a map() call always need keys
+// Keys tell React which array item each component corresponds to...so it can track it if any changes occur to it
+// this is important if your array involves editing, adding & deleting items
+// A well-chosen key helps React know what exactly has happened
+// hence helping it make the correct updates to the DOM tree
+// ***always include keys in your data (array) rather than creating them on the go
+
+// when you need your mapped list item rendered in several DOM nodes, just wrap it all up in a single <div> or 
+// ...use <since Fragment> since <></> doesn't take in attributes like the much needed key in our case
+// fragments disappear from the DOM so it will just render the components inside
