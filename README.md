@@ -1,6 +1,6 @@
 # rendering-lists
 
-![filter-map](https://user-images.githubusercontent.com/85868026/198602616-1e1d6ff2-174b-4939-84eb-d60c234f8be6.png)
+![scie](https://user-images.githubusercontent.com/85868026/198897450-34876fe5-0b2a-4a3a-9b61-6b0c7c2d02b7.png)
 
 In this read, I learnt to:
 - move data out of components and into data structures like arrays & objects
